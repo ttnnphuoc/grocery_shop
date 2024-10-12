@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class CartModel extends ChangeNotifier {
 	final List _shopItems = [
-		["Avocado", "4.00", "lib/images/avocado.png", Colors.green],
-		["Banana", "2.40", "lib/images/banana.png", Colors.yellowAccent],
-		["Chicken", "12.00", "lib/images/chicken.png", Colors.blue],
-		["Water", "1.00", "lib/images/water.png", Colors.red],
+		["Avocado", "4.00", "lib/images/avocado.png", Colors.green, 1],
+		["Banana", "2.40", "lib/images/banana.png", Colors.yellowAccent, 1],
+		["Chicken", "12.00", "lib/images/chicken.png", Colors.blue, 1],
+		["Water", "1.00", "lib/images/water.png", Colors.red, 1],
 	];
 
 	// List of cart items
@@ -18,11 +18,13 @@ class CartModel extends ChangeNotifier {
 	// Add item to cart
 	void addItemToCart(int index) {
 		_cartItems.add(_shopItems[index]);
+    notifyListeners();
 	}
 
 	// Remove item from cart
 	void removeItemFromCart(int index) {
-		_cartItems.remove(index);
+		_cartItems.removeAt(index);
+    notifyListeners();
 	}
 
 	// Calculate total price
